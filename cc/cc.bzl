@@ -12,15 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """ Generated file with dependencies for language rule."""
-
 # !!!! THIS IS A GENERATED FILE TO NOT EDIT IT BY HAND !!!!
 #
 # To regenerate this file, run ./update_deps.sh from the root of the
 # git repository.
-
 DIGESTS = {
-    # "gcr.io/distroless/cc:debug" circa 2021-12-01 22:45 +0200
-    "debug": "sha256:fbf229f6c5fcf038de4a7fa8139119c92785e24e68f9f26ef0906ad6d37bc62c",
-    # "gcr.io/distroless/cc:latest" circa 2021-12-01 22:45 +0200
-    "latest": "sha256:ceab2b378860e134f3b470f153fbd1117b81438ae51ab97e2568149e9883cd32",
+    # "gcr.io/distroless/cc:debug" circa 2022-04-18 11:01 -0400
+    "debug": "sha256:45e0414fd070606c246eebe0fbe1d02ef0e11c406abb238668a067cf63bd7581",
+    # "gcr.io/distroless/cc:latest" circa 2022-04-18 11:01 -0400
+    "latest": "sha256:78e70f5a0576b3ea7fc7ec4553f3885e82cb4546008e2459bd32fd1c1d9b0465",
 }

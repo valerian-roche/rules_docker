@@ -747,9 +747,6 @@ _attrs = dicts.add(_layer.attrs, {
 
         This field supports stamp variables.""",
     ),
-    "_allowlist_function_transition": attr.label(
-        default = "@bazel_tools//tools/allowlists/function_transition_allowlist",
-    ),
     "_digester": attr.label(
         default = "//container/go/cmd/digester",
         cfg = "host",
@@ -769,33 +766,10 @@ _outputs["config_digest"] = "%{name}.json.sha256"
 
 _outputs["build_script"] = "%{name}.executable"
 
-def _image_transition_impl(settings, attr):
-    return dicts.add(settings, {
-        "//command_line_option:platforms": "@io_bazel_rules_docker//platforms:image_transition",
-        "@io_bazel_rules_docker//platforms:image_transition_cpu": "@platforms//cpu:" + {
-            # Architecture aliases.
-            "386": "x86_32",
-            "amd64": "x86_64",
-            "ppc64le": "ppc",
-        }.get(attr.architecture, attr.architecture),
-        "@io_bazel_rules_docker//platforms:image_transition_os": "@platforms//os:" + attr.operating_system,
-    })
-
-_image_transition = transition(
-    implementation = _image_transition_impl,
-    inputs = [],
-    outputs = [
-        "//command_line_option:platforms",
-        "@io_bazel_rules_docker//platforms:image_transition_cpu",
-        "@io_bazel_rules_docker//platforms:image_transition_os",
-    ],
-)
-
 image = struct(
     attrs = _attrs,
     outputs = _outputs,
     implementation = _impl,
-    cfg = _image_transition,
 )
 
 container_image_ = rule(
@@ -805,7 +779,6 @@ container_image_ = rule(
     outputs = image.outputs,
     toolchains = ["@io_bazel_rules_docker//toolchains/docker:toolchain_type"],
     implementation = image.implementation,
-    cfg = image.cfg,
 )
 
 # This validates the two forms of value accepted by

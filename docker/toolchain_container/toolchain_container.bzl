@@ -243,7 +243,6 @@ language_tool_layer_ = rule(
     outputs = _container.image.outputs,
     toolchains = ["@io_bazel_rules_docker//toolchains/docker:toolchain_type"],
     implementation = _language_tool_layer_impl,
-    cfg = _container.image.cfg,
 )
 
 def language_tool_layer(**kwargs):
@@ -351,7 +350,6 @@ toolchain_container_ = rule(
     outputs = _container.image.outputs,
     toolchains = ["@io_bazel_rules_docker//toolchains/docker:toolchain_type"],
     implementation = _toolchain_container_impl,
-    cfg = _container.image.cfg,
 )
 
 def toolchain_container(**kwargs):

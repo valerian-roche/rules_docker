@@ -163,7 +163,6 @@ jar_dep_layer = rule(
     outputs = lang_image.outputs,
     toolchains = lang_image.toolchains,
     implementation = _jar_dep_layer_impl,
-    cfg = lang_image.cfg,
 )
 
 def _jar_app_layer_impl(ctx):
@@ -256,7 +255,6 @@ jar_app_layer = rule(
     outputs = _container.image.outputs,
     toolchains = ["@io_bazel_rules_docker//toolchains/docker:toolchain_type"],
     implementation = _jar_app_layer_impl,
-    cfg = _container.image.cfg,
 )
 
 def java_image(
@@ -364,7 +362,6 @@ _war_dep_layer = rule(
     outputs = _container.image.outputs,
     toolchains = ["@io_bazel_rules_docker//toolchains/docker:toolchain_type"],
     implementation = _war_dep_layer_impl,
-    cfg = _container.image.cfg,
 )
 
 def _war_app_layer_impl(ctx):
@@ -403,7 +400,6 @@ _war_app_layer = rule(
     outputs = _container.image.outputs,
     toolchains = ["@io_bazel_rules_docker//toolchains/docker:toolchain_type"],
     implementation = _war_app_layer_impl,
-    cfg = _container.image.cfg,
 )
 
 def war_image(name, base = None, deps = [], layers = [], **kwargs):

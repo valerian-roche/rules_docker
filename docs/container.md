@@ -426,7 +426,6 @@ You can write a customized container_image rule by writing something like:
         executable = True,
         outputs = _container.image.outputs,
         implementation = _impl,
-        cfg = _container.image.cfg,
     )
 
 
